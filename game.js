@@ -56,9 +56,9 @@ class Game {
     }
 
     clickCard(e) {
-        const activeCard = e.target
+        
+        const activeCard = e.target;
         activeCard.classList.remove('hidden');
-        console.log(this.clickedCards)
         this.clickedCards.push(activeCard);
 
         if (this.clickedCards.length === 1) {
@@ -79,7 +79,13 @@ class Game {
                     
                     this.pointsCounter++;
                     if (this.pointsCounter === this.winCounter) {
-                        this.won();
+                        this.clickedCards.forEach((card) => {
+                            card.classList.add('hidden')
+                        })
+                        setTimeout(() => {
+                            this.won();
+                        }, 700);
+                        
                     }
     
                 } else {
@@ -89,13 +95,13 @@ class Game {
                     console.log("cards doesn't match")
                 }
                 this.clickedCards.length =0;
-                console.log(this.clickedCards)
             }, 500);
         
     }
 
     won() {
-        alert("you won!")
+        alert("Congrats! You won! Click OK to try again");
+        location.reload();
     }
 }
 
