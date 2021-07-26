@@ -110,11 +110,14 @@ class Game {
 }
 
 const gameWrapper = document.getElementById('game__container');
-const level1 = document.getElementById('level-1').addEventListener('click' , runTheGame);
-function runTheGame() {
-    document.getElementById('intro').style.display = "none";
-    gameWrapper.style.visibility = 'visible';
-    const game = new Game(gameWrapper, 1);
-    game.start();
-    }
+Array.from(document.getElementsByClassName('level-button')).forEach((button) =>{
+    button.addEventListener('click' , function (){
+        const level  = this.value;
+        document.getElementById('intro').style.display = "none";
+        gameWrapper.style.visibility = 'visible';
+        const game = new Game(gameWrapper, level);
+        game.start() }
+    )
+})
+
 
