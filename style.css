@@ -56,3 +56,6 @@ body {
   .off{
       background-color: #efefef;
   }
+  .not-clickable {
+    pointer-events:none;
+  }

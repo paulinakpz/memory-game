@@ -4,9 +4,8 @@ class Game {
     cardColors = [
         "red", "red", "blue", "blue", "yellow", "yellow", "green", "green", "brown", "brown", "lightgreen", "lightgreen", "violet", "violet", "cadetblue", "cadetblue", "gray", "gray"
     ]
-    level = 1
-    numberOfCards = 18;
-    cardsArray = [];
+    numberOfCards = this.cardColors.length;
+    cardsArray = []; 
     clickedCards = [];
     pointsCounter = 0;
     winCounter = this.numberOfCards / 2;
@@ -18,7 +17,6 @@ class Game {
     start() {
         this.drawAndDisplayCards();
         this.coverCards();
-
     }
 
     drawAndDisplayCards() {
@@ -31,17 +29,14 @@ class Game {
             card.classList.add(this.cardColors[random]);
             this.cardColors.splice(random, 1);
             cardsWrapper.appendChild(card);
-
         }
         this.placeForGame.appendChild(cardsWrapper);
-
     }
 
     coverCards() {
         setTimeout(() => {
             this.cardsArray.forEach((card) => {
                 card.classList.add('hidden');
-
             })
         }, 2000);
         this.listenToClick();
@@ -49,54 +44,56 @@ class Game {
 
     listenToClick() {
         this.cardsArray.forEach((card) => {
-            card.addEventListener('click', (e) => {
-                this.clickCard(e)
-            })
+            card.addEventListener('click',  e => this.clickCard(e) )
         })
     }
 
     clickCard(e) {
-        
         const activeCard = e.target;
-        activeCard.classList.remove('hidden');
-        this.clickedCards.push(activeCard);
+        activeCard.classList.add('not-clickable');
+        activeCard.classList.remove('hidden'); 
+        this.clickedCards.push(activeCard); 
 
         if (this.clickedCards.length === 1) {
-            return;
+            return; 
 
         } else {
-            this.ifCardsMatch();
+            this.cardsArray.forEach((card) => {
+                card.classList.add('not-clickable');
+            }) 
+            this.checkMatching(); 
         }
     }
-
-    ifCardsMatch() {
+    
+    checkMatching() {
         setTimeout(() => {
                 if (this.clickedCards[0].className === this.clickedCards[1].className) {
-                    console.log("cards match")
                     this.clickedCards.forEach((card) => {
-                        card.classList.add('off')
+                        card.classList.add('off');
+                        this.cardsArray = this.cardsArray.filter((el) => el !== card);
                     })
-                    
                     this.pointsCounter++;
+
                     if (this.pointsCounter === this.winCounter) {
                         this.clickedCards.forEach((card) => {
                             card.classList.add('hidden')
                         })
                         setTimeout(() => {
                             this.won();
-                        }, 700);
-                        
+                        }, 500);
                     }
     
                 } else {
                     this.clickedCards.forEach((card) => {
-                        card.classList.add('hidden')
+                        card.classList.add('hidden');
+                        card.classList.remove('not-clickable')
                     })
-                    console.log("cards doesn't match")
                 }
-                this.clickedCards.length =0;
+                this.cardsArray.forEach((card) => {
+                    card.classList.remove('not-clickable')
+                })
+                this.clickedCards.length = 0;
             }, 500);
-        
     }
 
     won() {
@@ -104,6 +101,5 @@ class Game {
         location.reload();
     }
 }
-
 const game = new Game(gameWrapper);
 game.start();
