@@ -1,20 +1,27 @@
-const gameWrapper = document.getElementById('game__container');
+
+
+
 
 class Game {
     cardColors = [
-        "red", "red", "blue", "blue", "yellow", "yellow", "green", "green", "brown", "brown", "lightgreen", "lightgreen", "violet", "violet", "cadetblue", "cadetblue", "gray", "gray"
+        "red", "red", "blue", "blue", "yellow", "yellow", "green", "green","brown", "brown", 
+        "lightgreen", "lightgreen", "violet", "violet", "cadetblue", "cadetblue", 
+        "gray", "gray"
     ]
+
     numberOfCards = this.cardColors.length;
     cardsArray = []; 
     clickedCards = [];
     pointsCounter = 0;
     winCounter = this.numberOfCards / 2;
 
-    constructor(placeForGame) {
+    constructor(placeForGame, level) {
+        this.level = level;
         this.placeForGame = placeForGame;
     }
 
     start() {
+        console.log("dfghj")
         this.drawAndDisplayCards();
         this.coverCards();
     }
@@ -24,7 +31,7 @@ class Game {
         for (let i = 0; i < this.numberOfCards; i++) {
             const card = document.createElement('div');
             this.cardsArray.push(card);
-            card.classList.add('card');
+            card.classList.add('card-3-6');
             const random = Math.floor(Math.random() * this.cardColors.length);
             card.classList.add(this.cardColors[random]);
             this.cardColors.splice(random, 1);
@@ -101,5 +108,13 @@ class Game {
         location.reload();
     }
 }
-const game = new Game(gameWrapper);
-game.start();
+
+const gameWrapper = document.getElementById('game__container');
+const level1 = document.getElementById('level-1').addEventListener('click' , runTheGame);
+function runTheGame() {
+    document.getElementById('intro').style.display = "none";
+    gameWrapper.style.visibility = 'visible';
+    const game = new Game(gameWrapper, 1);
+    game.start();
+    }
+

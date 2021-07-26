@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory Game</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<section class="game">
-    <div id="game__container">
-    </div>
-</section>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section id="intro">
+      <h1>Memory</h1>
+      <div class="choose-level">
+        <h2>Let's play the game! You can pick your level.</h2>
+        <div class="level-buttons">
+            <button id="level-1">Level 1</button>
+            <button id="level-2">Level 2</button>
+            <button id="level-3">Level 3</button>
+          </div>
+            <p>Good luck!</p>
+      </div>
+
+      </div>
+    </section>
+    <section class="game">
+      <div id="game__container"></div>
+    </section>
 
     <script src="game.js"></script>
-</body>
+  </body>
 </html>
