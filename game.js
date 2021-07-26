@@ -1,37 +1,48 @@
-
-
-
-
 class Game {
-    cardColors = [
+    colors = [
         "red", "red", "blue", "blue", "yellow", "yellow", "green", "green","brown", "brown", 
         "lightgreen", "lightgreen", "violet", "violet", "cadetblue", "cadetblue", 
-        "gray", "gray"
+        "gray", "gray", "aqua" , "aqua" , "coral" , "coral" , "teal" , "teal"
     ]
-
-    numberOfCards = this.cardColors.length;
+    
     cardsArray = []; 
     clickedCards = [];
     pointsCounter = 0;
-    winCounter = this.numberOfCards / 2;
+    
+    
 
     constructor(placeForGame, level) {
-        this.level = level;
+        this.level = +level;
         this.placeForGame = placeForGame;
+        this.cardColors = this.colors.slice(0, this.level);
     }
-
+    
     start() {
-        console.log("dfghj")
+        
+        this.numberOfCards = this.cardColors.length;
+        this.winCounter = (+this.numberOfCards / 2) ;
+        console.log( this.winCounter)
+        console.log( this.numberOfCards)
         this.drawAndDisplayCards();
         this.coverCards();
     }
 
     drawAndDisplayCards() {
+        if(this.level === 12 ){
+            this.cardClass = 'card-4-3';
+        }
+        if(this.level === 18) {
+            this.cardClass = 'card-6-3';
+        }
+        if(this.level === 24){
+            this.cardClass = 'card-6-4';
+        }
         let cardsWrapper = new DocumentFragment();
-        for (let i = 0; i < this.numberOfCards; i++) {
+        for (let i = 0; i < this.level ; i++) {
             const card = document.createElement('div');
             this.cardsArray.push(card);
-            card.classList.add('card-3-6');
+            card.classList.add(this.cardClass);
+            
             const random = Math.floor(Math.random() * this.cardColors.length);
             card.classList.add(this.cardColors[random]);
             this.cardColors.splice(random, 1);
@@ -119,5 +130,8 @@ Array.from(document.getElementsByClassName('level-button')).forEach((button) =>{
         game.start() }
     )
 })
+
+
+
 
 
