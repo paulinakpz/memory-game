@@ -4,12 +4,9 @@ class Game {
         "lightgreen", "lightgreen", "violet", "violet", "cadetblue", "cadetblue", 
         "gray", "gray", "aqua" , "aqua" , "coral" , "coral" , "teal" , "teal"
     ]
-    
     cardsArray = []; 
     clickedCards = [];
     pointsCounter = 0;
-    
-    
 
     constructor(placeForGame, level) {
         this.level = +level;
@@ -100,7 +97,6 @@ class Game {
                             this.won();
                         }, 500);
                     }
-    
                 } else {
                     this.clickedCards.forEach((card) => {
                         card.classList.add('hidden');

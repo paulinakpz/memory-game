@@ -5,8 +5,9 @@
 }
 
 body {
-  background-color: #dfdfdf;
+  background-color: #E6F4F1;
   font-family: Arial, Helvetica, sans-serif;
+  color: #005C72;
   font-size: 1.5em;
 }
 #intro {
@@ -32,10 +33,15 @@ body {
 .level-buttons button {
   padding: 1em;
   margin: 0 2em;
-  background-color: #efefef;
-  border: 1px solid black;
-  border-radius: 3px;
+  background-color: #00C2CB;
+  border: none;
+  border-radius: 5px;
 }
+.level-buttons button:hover {
+  border-radius: 8px;
+  box-shadow: -1px 0px 11px 0px #005C72;
+}
+
 .game {
   display: flex;
   justify-content: center;
