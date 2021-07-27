@@ -13,9 +13,7 @@ class Game {
         this.placeForGame = placeForGame;
         this.cardColors = this.colors.slice(0, this.level);
     }
-    
     start() {
-        
         this.numberOfCards = this.cardColors.length;
         this.winCounter = (+this.numberOfCards / 2) ;
         console.log( this.winCounter)
