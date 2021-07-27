@@ -5,9 +5,9 @@
 }
 
 body {
-  background-color: #E6F4F1;
+  background-color: #e6f4f1;
   font-family: Arial, Helvetica, sans-serif;
-  color: #005C72;
+  color: #005c72;
   font-size: 1.5em;
 }
 #intro {
@@ -33,13 +33,13 @@ body {
 .level-buttons button {
   padding: 1em;
   margin: 0 2em;
-  background-color: #00C2CB;
+  background-color: #00c2cb;
   border: none;
   border-radius: 5px;
 }
 .level-buttons button:hover {
   border-radius: 8px;
-  box-shadow: -1px 0px 11px 0px #005C72;
+  box-shadow: -1px 0px 11px 0px #005c72;
 }
 
 .game {
@@ -54,19 +54,39 @@ body {
   flex-direction: row;
 }
 .card-6-3 {
-  width: 16.66vw;
-  height: 33.33vh;
+  width: 33vw;
+  height: 16vh;
   border: 2px solid white;
+}
+@media screen and (min-width: 800px) {
+  .card-6-3 {
+    width: 16.66vw;
+    height: 33.33vh;
+    border: 2px solid white;
+  }
 }
 .card-4-3 {
-  width: 25vw;
-  height: 33.33vh;
-  border: 2px solid white;
-}
-.card-6-4 {
-  width: 16.66vw;
+  width: 33.33vh;
   height: 25vh;
   border: 2px solid white;
+}
+@media screen and (min-width: 800px) {
+  .card-4-3 {
+    width: 25vw;
+    height: 33.33vh;
+   
+  }
+}
+.card-6-4 {
+  width: 25vw;
+  height: 16.66vh;
+  border: 2px solid white;
+}
+@media screen and (min-width: 800px) {
+  .card-6-4 {
+    width: 16.66vw;
+    height: 25vh;
+  }
 }
 .red {
   background-color: red;
