@@ -15,9 +15,9 @@ class Game {
     }
     start() {
         this.numberOfCards = this.cardColors.length;
-        this.winCounter = (+this.numberOfCards / 2) ;
-        console.log( this.winCounter)
-        console.log( this.numberOfCards)
+        this.winCounter = (+this.numberOfCards / 2);
+        this.startTime = new Date().getTime();
+        console.log(this.startTime)
         this.drawAndDisplayCards();
         this.coverCards();
     }
@@ -85,6 +85,8 @@ class Game {
                         card.classList.add('off');
                         this.cardsArray = this.cardsArray.filter((el) => el !== card);
                     })
+                    this.endTime = new Date().getTime();
+                    this.gameTime = Math.ceil((this.endTime - this.startTime) / 1000);
                     this.pointsCounter++;
 
                     if (this.pointsCounter === this.winCounter) {
@@ -109,7 +111,7 @@ class Game {
     }
 
     won() {
-        alert("Congrats! You won! Click OK to try again");
+        alert(`Congrats! You won! Your time is ${this.gameTime} sec. Click OK to try again`);
         location.reload();
     }
 }
