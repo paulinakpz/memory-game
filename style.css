@@ -28,11 +28,11 @@ body {
   padding: 1em;
 }
 @media screen and (min-width: 800px) {
-  .choose-level { 
+  .choose-level {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
     height: 60vh;
     padding: 4em;
   }
@@ -51,17 +51,16 @@ body {
   margin: 1.5em 1em;
   background-color: #00c2cb;
   border: none;
+  font-weight: 500;
 }
 @media screen and (min-width: 800px) {
   .level-buttons button {
     margin: 3em;
   }
-  
 }
 
 .level-buttons button:hover {
-  border-radius: 8px;
-  box-shadow: -1px 0px 11px 0px #005c72;
+  box-shadow: -1px 0px 7px 1px #0f819e
 }
 
 .game {
@@ -81,7 +80,7 @@ body {
   border: 2px solid white;
 }
 @media screen and (min-width: 800px) {
-  .card-6-3 { 
+  .card-6-3 {
     width: 16.66vw;
     height: 33.33vh;
     border: 2px solid white;
@@ -93,10 +92,9 @@ body {
   border: 2px solid white;
 }
 @media screen and (min-width: 800px) {
-  .card-4-3 { 
+  .card-4-3 {
     width: 25vw;
     height: 33.33vh;
-   
   }
 }
 .card-6-4 {
@@ -105,7 +103,7 @@ body {
   border: 2px solid white;
 }
 @media screen and (min-width: 800px) {
-  .card-6-4 { 
+  .card-6-4 {
     width: 16.66vw;
     height: 25vh;
   }
