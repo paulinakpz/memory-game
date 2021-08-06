@@ -87,7 +87,7 @@ body {
   }
 }
 .card-4-3 {
-  width: 33.33vh;
+  width: 33.33vw;
   height: 25vh;
   border: 2px solid white;
 }

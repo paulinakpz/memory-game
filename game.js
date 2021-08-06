@@ -17,7 +17,6 @@ class Game {
         this.numberOfCards = this.cardColors.length;
         this.winCounter = (+this.numberOfCards / 2);
         this.startTime = new Date().getTime();
-        console.log(this.startTime)
         this.drawAndDisplayCards();
         this.coverCards();
     }
