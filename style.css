@@ -163,6 +163,7 @@ max-height: 100%;
 }
 .message {
   display: none;
+  text-align: center;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -172,4 +173,7 @@ max-height: 100%;
   border-radius: 20px;
   border: 3px solid #0f819e;
   background-color: #fff;
+}
+.message-info {
+  color: #0f819e;
 }
