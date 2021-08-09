@@ -119,7 +119,7 @@ class Game {
 }
 
 const gameWrapper = document.getElementById('game__container');
-Array.from(document.getElementsByClassName('level-button')).forEach((button) => {
+Array.from(document.getElementsByClassName('btn')).forEach((button) => {
     button.addEventListener('click', function () {
         const level = this.value;
         document.getElementById('intro').style.display = "none";
@@ -129,8 +129,6 @@ Array.from(document.getElementsByClassName('level-button')).forEach((button) => 
     }
     )
 })
-
-
 
 
 
