@@ -110,6 +110,7 @@ class Game {
     }
 
     won() {
+        
         alert(`Congrats! You won! Your time is ${this.gameTime} sec. Click OK to try again`);
         location.reload();
     }
