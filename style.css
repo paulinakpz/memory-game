@@ -23,8 +23,8 @@ body {
   height: 30vh;
 }
 .memory-logo img {
-max-width: 100%;
-max-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 .choose-level {
   display: flex;
@@ -32,7 +32,7 @@ max-height: 100%;
   align-items: center;
   height: 60vh;
   padding: 1em;
-  color: #4496f4  ;
+  color: #4496f4;
 }
 @media screen and (min-width: 800px) {
   .choose-level {
@@ -56,7 +56,7 @@ max-height: 100%;
 .level-buttons button {
   padding: 1em;
   margin: 1.5em 1em;
-  background-color: #5b84ee  ;
+  background-color: #5b84ee;
   border: none;
   font-weight: 500;
   color: #fff;
@@ -68,7 +68,7 @@ max-height: 100%;
 }
 
 .level-buttons button:hover {
-  box-shadow: -1px 0px 7px 1px #0f819e
+  box-shadow: -1px 0px 7px 1px #0f819e;
 }
 
 .game {
@@ -168,12 +168,23 @@ max-height: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60vw;
-  height: 50vh;
+  height: 65vh;
   border-radius: 20px;
   border: 3px solid #0f819e;
   background-color: #fff;
 }
+@media screen and (min-width: 769px) {
+  .message {
+    height: 50vh;
+  }
+}
+.message__logo {
+  height: 40%;
+}
+.message__logo img {
+  height: 100%;
+}
 .message-info {
   color: #0f819e;
+  padding: 1.5em;
 }

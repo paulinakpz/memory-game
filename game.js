@@ -1,10 +1,10 @@
 class Game {
     colors = [
-        "red", "red", "blue", "blue", "yellow", "yellow", "green", "green","brown", "brown", 
-        "lightgreen", "lightgreen", "violet", "violet", "cadetblue", "cadetblue", 
-        "gray", "gray", "aqua" , "aqua" , "coral" , "coral" , "teal" , "teal"
+        "red", "red", "blue", "blue", "yellow", "yellow", "green", "green", "brown", "brown",
+        "lightgreen", "lightgreen", "violet", "violet", "cadetblue", "cadetblue",
+        "gray", "gray", "aqua", "aqua", "coral", "coral", "teal", "teal"
     ]
-    cardsArray = []; 
+    cardsArray = [];
     clickedCards = [];
     pointsCounter = 0;
 
@@ -22,21 +22,21 @@ class Game {
     }
 
     drawAndDisplayCards() {
-        if(this.level === 12 ){
+        if (this.level === 12) {
             this.cardClass = 'card-4-3';
         }
-        if(this.level === 18) {
+        if (this.level === 18) {
             this.cardClass = 'card-6-3';
         }
-        if(this.level === 24){
+        if (this.level === 24) {
             this.cardClass = 'card-6-4';
         }
         let cardsWrapper = new DocumentFragment();
-        for (let i = 0; i < this.level ; i++) {
+        for (let i = 0; i < this.level; i++) {
             const card = document.createElement('div');
             this.cardsArray.push(card);
             card.classList.add(this.cardClass);
-            
+
             const random = Math.floor(Math.random() * this.cardColors.length);
             card.classList.add(this.cardColors[random]);
             this.cardColors.splice(random, 1);
@@ -56,74 +56,77 @@ class Game {
 
     listenToClick() {
         this.cardsArray.forEach((card) => {
-            card.addEventListener('click',  e => this.clickCard(e) )
+            card.addEventListener('click', e => this.clickCard(e))
         })
     }
 
     clickCard(e) {
         const activeCard = e.target;
         activeCard.classList.add('not-clickable');
-        activeCard.classList.remove('hidden'); 
-        this.clickedCards.push(activeCard); 
+        activeCard.classList.remove('hidden');
+        this.clickedCards.push(activeCard);
 
         if (this.clickedCards.length === 1) {
-            return; 
+            return;
 
         } else {
             this.cardsArray.forEach((card) => {
                 card.classList.add('not-clickable');
-            }) 
-            this.checkMatching(); 
+            })
+            this.checkMatching();
         }
     }
-    
+
     checkMatching() {
         setTimeout(() => {
-                if (this.clickedCards[0].className === this.clickedCards[1].className) {
-                    this.clickedCards.forEach((card) => {
-                        card.classList.add('off');
-                        this.cardsArray = this.cardsArray.filter((el) => el !== card);
-                    })
-                    this.endTime = new Date().getTime();
-                    this.gameTime = Math.ceil((this.endTime - this.startTime) / 1000);
-                    this.pointsCounter++;
+            if (this.clickedCards[0].className === this.clickedCards[1].className) {
+                this.clickedCards.forEach((card) => {
+                    card.classList.add('off');
+                    this.cardsArray = this.cardsArray.filter((el) => el !== card);
+                })
+                this.endTime = new Date().getTime();
+                this.gameTime = Math.ceil((this.endTime - this.startTime) / 1000);
+                this.pointsCounter++;
 
-                    if (this.pointsCounter === this.winCounter) {
-                        this.clickedCards.forEach((card) => {
-                            card.classList.add('hidden')
-                        })
-                        setTimeout(() => {
-                            this.won();
-                        }, 500);
-                    }
-                } else {
+                if (this.pointsCounter === this.winCounter) {
                     this.clickedCards.forEach((card) => {
-                        card.classList.add('hidden');
-                        card.classList.remove('not-clickable')
+                        card.classList.add('hidden')
                     })
+                    setTimeout(() => {
+                        this.won();
+                    }, 500);
                 }
-                this.cardsArray.forEach((card) => {
+            } else {
+                this.clickedCards.forEach((card) => {
+                    card.classList.add('hidden');
                     card.classList.remove('not-clickable')
                 })
-                this.clickedCards.length = 0;
-            }, 500);
+            }
+            this.cardsArray.forEach((card) => {
+                card.classList.remove('not-clickable')
+            })
+            this.clickedCards.length = 0;
+        }, 500);
     }
 
     won() {
-        
-        alert(`Congrats! You won! Your time is ${this.gameTime} sec. Click OK to try again`);
-        location.reload();
+        document.getElementById('message').style.display = 'block';
+        document.getElementById('message-info').textContent = `Congrats! You won! Your time is ${this.gameTime} sec!`;
+        document.getElementById('try-again').addEventListener('click', function () {
+            location.reload();
+        })
     }
 }
 
 const gameWrapper = document.getElementById('game__container');
-Array.from(document.getElementsByClassName('level-button')).forEach((button) =>{
-    button.addEventListener('click' , function (){
-        const level  = this.value;
+Array.from(document.getElementsByClassName('level-button')).forEach((button) => {
+    button.addEventListener('click', function () {
+        const level = this.value;
         document.getElementById('intro').style.display = "none";
         gameWrapper.style.visibility = 'visible';
         const game = new Game(gameWrapper, level);
-        game.start() }
+        game.start()
+    }
     )
 })
 
